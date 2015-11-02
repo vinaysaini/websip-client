@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <script src="src/SIPml-api.js?svn=230" type="text/javascript"> </script>
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="css/widget.css">
+        <script type="text/javascript" src="src/session.js"></script>
+        <script type="text/javascript" src="src/widget.js"></script>
+    </head>
+    
+    <body style="background-color: aquamarine;">
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fab-widget" onclick="showWidget()">
+            <i class="material-icons">call</i>
+        </button>
+
+        <div id="widgetCard" class="mdl-shadow--2dp fab-widget inactive" style="width: 285px;background: #fff;">
+            <div class="mdl-card__title" style="background-color: #DDD;">
+                <h6 class="mdl-card__title-text">SipClient</h6> -- 
+                <div id="txtRegStatus"></div>
+            </div>
+            
+            <div>
+                <div id="first" class="mdl-card__supporting-text" style="border-top: 1px solid rgba(0,0,0,.1);">
+                    <div id="container">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="number"/>
+                            <label class="mdl-textfield__label" for="sample3">Number</label>
+                        </div>
+                        <ul class="numpad">
+                            <li>
+                                <button onclick="dialNum('1');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">1</button>
+                            </li>
+                            <li>
+                                <button onclick="dialNum('2');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">2</button>
+                            </li>
+                            <li>
+                                <button onclick="dialNum('3');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">3</button>
+                            </li>
+                            <li>
+                                <button onclick="dialNum('4');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">4</button>
+                            </li>
+                            <li>
+                                <button onclick="dialNum('5');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">5</button>
+                            </li>
+                            <li>
+                                <button onclick="dialNum('6');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">6</button>
+                            </li>
+                            <li>
+                                <button onclick="dialNum('7');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">7</button>
+                            </li>
+                            <li>
+                                <button onclick="dialNum('8');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">8</button>
+                            </li>
+                            <li>
+                                <button onclick="dialNum('9');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">9</button>
+                            </li>
+                            <li>
+                                <button onclick="dialNum('*');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">*</button>
+                            </li>
+                            <li>
+                                <button onclick="dialNum('0');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">0</button>
+                            </li>
+                            <li>
+                                <button onclick="dialNum('#');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">#</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="second" class="mdl-card__supporting-text" style="border-top: 1px solid rgba(0,0,0,.1);">
+                    <div id="container">
+                        <h6>Dialed Number...</h6>
+                        <h3 id="disp1"><b></b></h3>
+                        </br></br>
+                        <h6 id="txtCallStatus"></h6>
+                    </div>
+                </div>  
+            </div>
+
+            <div class="mdl-card__actions mdl-card--border">
+                <a id="audioButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="audioCall();">
+                    Audio Call       
+                </a>
+                <a id="endButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="endCall();">
+                    End
+                </a>  
+            </div>
+
+            <div class="mdl-card__menu">
+                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="hideWidget();">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Audios -->
+        <audio id="audio_remote" autoplay="autoplay" />
+        <audio id="ringtone" loop src="sounds/ringtone.wav" />
+        <audio id="ringbacktone" loop src="sounds/ringbacktone.wav" />
+        <audio id="dtmfTone" src="sounds/dtmf.wav" />
+
+    </body>
+</html>
