@@ -1,3 +1,13 @@
+var oConfigCall = {
+    audio_remote: document.getElementById("audio_remote"),
+    bandwidth: { audio:undefined, video:undefined },
+    events_listener: { events: '*', listener: onSipEventSession },
+    sip_caps: [
+                    { name: '+g.oma.sip-im' },
+                    { name: 'language', value: '\"en,fr\"' }
+                ]
+};
+
 // Callback function for SIP Stacks
 function onSipEventStack(e /*SIPml.Stack.Event*/) {
     tsk_utils_log_info('==stack event = ' + e.type);
@@ -34,24 +44,30 @@ function onSipEventStack(e /*SIPml.Stack.Event*/) {
 
                 stopRingbackTone();
                 stopRingTone();
+                oSipSessionCall = null;
                 break;
             }
 
         case 'i_new_call':
             {
                 if (oSipSessionCall) {
+                    console.log("----------==============================----------------");
+                    console.log(oSipSessionCall);
                     // do not accept the incoming call if we're already 'in call'
                     e.newSession.hangup(); // comment this line for multi-line support
                 }
                 else {
                     oSipSessionCall = e.newSession;
                     // start listening for events
+
                     oSipSessionCall.setConfiguration(oConfigCall);
                     startRingTone();
-
+                    console.log("----------==============================----------------");
+                    console.log(oSipSessionCall);
+                    console.log("----------==============================----------------");
                     var sRemoteNumber = (oSipSessionCall.getRemoteFriendlyName() || 'unknown');
                     
-                    showNotifICall(sRemoteNumber);
+                    
                 }
                 break;
             }
@@ -89,6 +105,7 @@ function onSipEventSession(e /* SIPml.Session.Event */) {
                     if (bConnected) {
                         stopRingbackTone();
                         stopRingTone();
+                        oSipSessionCall = null;
 
                         if (oNotifICall) {
                             oNotifICall.cancel();
@@ -111,6 +128,7 @@ function onSipEventSession(e /* SIPml.Session.Event */) {
                         setTimeout(function(){ 
                             stopRingbackTone();
                             stopRingTone();
+                            oSipSessionCall = null;
                             $('#endButton').hide();
                             $('#audioButton').show();
                             $('#first').show();
@@ -154,6 +172,7 @@ function onSipEventSession(e /* SIPml.Session.Event */) {
                 if(e.session == oSipSessionCall){
                     stopRingbackTone();
                     stopRingTone();
+                    oSipSessionCall = null;
                     txtCallStatus.innerHTML = '<i>Early media started</i>';
                 }
                 break;

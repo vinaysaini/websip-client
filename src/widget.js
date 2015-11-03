@@ -1,5 +1,7 @@
 var userAgent, callSession;
 var deviceStatus = false;
+var oSipStack, oSipSessionRegister, oSipSessionCall, oSipSessionTransferCall;
+ringtone = document.getElementById('ringtone');
 
 setTimeout(function(){ 
     if(!deviceStatus){
@@ -30,6 +32,8 @@ function register(){
             impu: userAgent.impu,
             password: userAgent.password,
             display_name: userAgent.display_name,
+            outbound_proxy_url: userAgent.proxy,
+            enable_rtcweb_breaker: true, 
             events_listener: { events: '*', listener: onSipEventStack },
             enable_early_ims: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.disable_early_ims') != "true" : true), // Must be true unless you're using a real IMS network
             enable_media_stream_cache: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.enable_media_caching') == "true" : true),
@@ -81,6 +85,7 @@ function endCall(){
         oSipSessionCall.hangup({events_listener: { events: '*', listener: onSipEventSession }});
     }
     oSipSessionCall.hangup({events_listener: { events: '*', listener: onSipEventSession }});
+     oSipSessionCall = null;
 }
 
 function sipSendDTMF(c){
@@ -92,6 +97,8 @@ function sipSendDTMF(c){
 }
 
 function startRingTone() {
+    console.log("Ringtone----------Rongtone");
+    ringtone = document.getElementById('ringtone');
     try { ringtone.play(); }
     catch (e) { }
 }
@@ -112,10 +119,7 @@ function stopRingbackTone() {
 }
 
 $(function(){
-    var $first = $('#first');
-    var $second = $('#second');
-    $second.hide();
-
+    $('#second').hide();
     $('#audioButton').click(function(){
         $('#first').hide();
         $('#second').show();
