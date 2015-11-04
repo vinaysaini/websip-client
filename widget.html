@@ -76,12 +76,24 @@
                         </br></br>
                         <h6 id="txtCallStatus"></h6>
                     </div>
-                </div>  
+                </div> 
+
+                <div id="third" class="mdl-card__supporting-text" style="border-top: 1px solid rgba(0,0,0,.1);">
+                    <div id="container">
+                        <h6>Incoming Call..</h6>
+                        <h3 id="callerNum"><b></b></h3>
+                        </br></br>
+                        <h6 id="txtCallStatus1"></h6>
+                    </div>
+                </div> 
             </div>
 
             <div class="mdl-card__actions mdl-card--border">
                 <a id="audioButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="audioCall();">
                     Audio Call       
+                </a>
+                <a id="answerButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="answerCall();">
+                    Answer       
                 </a>
                 <a id="endButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="endCall();">
                     End

@@ -16,6 +16,7 @@ function showWidget(){
     $('#callStatus').hide();
     $('#widgetCard').show();
     $('#endButton').hide();
+    $('#answerButton').hide();
 }
 
 function hideWidget(){
@@ -33,6 +34,7 @@ function register(){
             password: userAgent.password,
             display_name: userAgent.display_name,
             outbound_proxy_url: userAgent.proxy,
+            enable_media_stream_cache: true,
             enable_rtcweb_breaker: true, 
             events_listener: { events: '*', listener: onSipEventStack },
             enable_early_ims: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.disable_early_ims') != "true" : true), // Must be true unless you're using a real IMS network
@@ -69,14 +71,17 @@ function audioCall(){
         oSipSessionCall = null;
         txtCallStatus.value = 'Failed to make call';
         $('#endButton').hide();
+        $('#answerButton').hide();
         $('#audioButton').show();
     }
 }
 
 function endCall(){
     $('#endButton').hide();
+    $('#answerButton').hide();
     $('#audioButton').show();
     //$('#widgetCard').hide();
+    stopRingTone();
     stopRingbackTone();
     //oSipSessionCall.hangup();
     $('#callStatus').hide();
@@ -86,6 +91,29 @@ function endCall(){
     }
     oSipSessionCall.hangup({events_listener: { events: '*', listener: onSipEventSession }});
      oSipSessionCall = null;
+}
+
+function incomingCall(callerNum){
+
+    $('#callerNum').html(callerNum.getRemoteFriendlyName());
+    $('#third').show();
+    $('#first').hide(); 
+    $('#audioButton').hide();
+    $('#endButton').show();
+    $('#answerButton').show();
+    $('#widgetCard').show();
+    
+}
+
+function answerCall(){
+    $('#answerButton').hide();
+    stopRingTone();
+    //txtCallStatus.innerHTML = '<i>Connecting...</i>';
+    if (oSipSessionCall) {
+        txtCallStatus1.innerHTML = '<i>Connecting...</i>';
+        oSipSessionCall.accept(oConfigCall);
+    }
+    
 }
 
 function sipSendDTMF(c){
@@ -130,6 +158,7 @@ $(function(){
         setTimeout(function(){ 
             $('#first').show();
             $('#second').hide(); 
+            $('#third').hide();
             $('#disp1').html("");
             $('#txtCallStatus').html("");
         }, 1500);   

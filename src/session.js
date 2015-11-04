@@ -1,6 +1,5 @@
 var oConfigCall = {
     audio_remote: document.getElementById("audio_remote"),
-    bandwidth: { audio:undefined, video:undefined },
     events_listener: { events: '*', listener: onSipEventSession },
     sip_caps: [
                     { name: '+g.oma.sip-im' },
@@ -66,6 +65,7 @@ function onSipEventStack(e /*SIPml.Stack.Event*/) {
                     console.log(oSipSessionCall);
                     console.log("----------==============================----------------");
                     var sRemoteNumber = (oSipSessionCall.getRemoteFriendlyName() || 'unknown');
+                    incomingCall(oSipSessionCall);
                     
                     
                 }
@@ -105,7 +105,7 @@ function onSipEventSession(e /* SIPml.Session.Event */) {
                     if (bConnected) {
                         stopRingbackTone();
                         stopRingTone();
-                        oSipSessionCall = null;
+                        //oSipSessionCall = null;
 
                         if (oNotifICall) {
                             oNotifICall.cancel();
@@ -130,8 +130,10 @@ function onSipEventSession(e /* SIPml.Session.Event */) {
                             stopRingTone();
                             oSipSessionCall = null;
                             $('#endButton').hide();
+                            $('#answerButton').hide();
                             $('#audioButton').show();
                             $('#first').show();
+                            $('#third').hide();
                             $('#second').hide(); 
                             $('#disp1').html("");
                             $('#txtCallStatus').html("");
@@ -172,7 +174,7 @@ function onSipEventSession(e /* SIPml.Session.Event */) {
                 if(e.session == oSipSessionCall){
                     stopRingbackTone();
                     stopRingTone();
-                    oSipSessionCall = null;
+                    //oSipSessionCall = null;
                     txtCallStatus.innerHTML = '<i>Early media started</i>';
                 }
                 break;
