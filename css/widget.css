@@ -63,7 +63,7 @@
     background: 0 !important;
 }
 
-/*#first {
+#first {
     animation-duration: 2s;
     animation-name: slidein;
 }
@@ -90,4 +90,3 @@
   0%   { opacity: 0; }
   100% { opacity: 1; }
 }
-*/
