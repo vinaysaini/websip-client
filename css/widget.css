@@ -62,3 +62,32 @@
     box-shadow: 0px 0px !important;
     background: 0 !important;
 }
+
+/*#first {
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+#second {
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+#third {
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+#second #container h6{
+    animation: slidein 3s infinite;
+}
+
+#third #container h6{
+    animation: slidein 3s infinite;
+}
+
+@keyframes slidein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+*/

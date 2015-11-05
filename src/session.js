@@ -41,8 +41,8 @@ function onSipEventStack(e /*SIPml.Stack.Event*/) {
                 oSipSessionRegister = null;
                 oSipSessionCall = null;
 
-                stopRingbackTone();
-                stopRingTone();
+                Widget.stopRingbackTone();
+                Widget.stopRingTone();
                 oSipSessionCall = null;
                 break;
             }
@@ -50,8 +50,6 @@ function onSipEventStack(e /*SIPml.Stack.Event*/) {
         case 'i_new_call':
             {
                 if (oSipSessionCall) {
-                    console.log("----------==============================----------------");
-                    console.log(oSipSessionCall);
                     // do not accept the incoming call if we're already 'in call'
                     e.newSession.hangup(); // comment this line for multi-line support
                 }
@@ -60,12 +58,9 @@ function onSipEventStack(e /*SIPml.Stack.Event*/) {
                     // start listening for events
 
                     oSipSessionCall.setConfiguration(oConfigCall);
-                    startRingTone();
-                    console.log("----------==============================----------------");
-                    console.log(oSipSessionCall);
-                    console.log("----------==============================----------------");
+                    Widget.startRingTone();
                     var sRemoteNumber = (oSipSessionCall.getRemoteFriendlyName() || 'unknown');
-                    incomingCall(oSipSessionCall);
+                    Widget.incomingCall(oSipSessionCall);
                     
                     
                 }
@@ -103,8 +98,8 @@ function onSipEventSession(e /* SIPml.Session.Event */) {
                 }
                 else if (e.session == oSipSessionCall) {
                     if (bConnected) {
-                        stopRingbackTone();
-                        stopRingTone();
+                        Widget.stopRingbackTone();
+                        Widget.stopRingTone();
                         //oSipSessionCall = null;
 
                         if (oNotifICall) {
@@ -126,8 +121,8 @@ function onSipEventSession(e /* SIPml.Session.Event */) {
                 }else if (e.session == oSipSessionCall) {
                         $('#txtCallStatus').html("Call Failed..");
                         setTimeout(function(){ 
-                            stopRingbackTone();
-                            stopRingTone();
+                            Widget.stopRingbackTone();
+                            Widget.stopRingTone();
                             oSipSessionCall = null;
                             $('#endButton').hide();
                             $('#answerButton').hide();
@@ -162,7 +157,7 @@ function onSipEventSession(e /* SIPml.Session.Event */) {
                 if(e.session == oSipSessionCall){
                     var iSipResponseCode = e.getSipResponseCode();
                     if (iSipResponseCode == 180 || iSipResponseCode == 183) {
-                        startRingbackTone();
+                        Widget.startRingbackTone();
                         txtCallStatus.innerHTML = '<i>Remote ringing...</i>';
                     }
                 }
@@ -172,8 +167,8 @@ function onSipEventSession(e /* SIPml.Session.Event */) {
         case 'm_early_media':
             {
                 if(e.session == oSipSessionCall){
-                    stopRingbackTone();
-                    stopRingTone();
+                    Widget.stopRingbackTone();
+                    Widget.stopRingTone();
                     //oSipSessionCall = null;
                     txtCallStatus.innerHTML = '<i>Early media started</i>';
                 }
