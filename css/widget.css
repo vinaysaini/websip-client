@@ -58,6 +58,13 @@
     position: relative;
 }
 
+#contactTable table th{
+    text-align: left;
+}
+#contactTable table td{
+    text-align: left;
+}
+
 .ripple-list {
     box-shadow: 0px 0px !important;
     background: 0 !important;

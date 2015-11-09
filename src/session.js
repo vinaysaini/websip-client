@@ -127,6 +127,8 @@ function onSipEventSession(e /* SIPml.Session.Event */) {
                             $('#endButton').hide();
                             $('#answerButton').hide();
                             $('#audioButton').show();
+                            $('#backButton').hide();
+                            $('#contactButton').show();
                             $('#first').show();
                             $('#third').hide();
                             $('#second').hide(); 

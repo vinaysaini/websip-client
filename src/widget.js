@@ -18,6 +18,8 @@ Widget = {
         $('#widgetCard').show();
         $('#endButton').hide();
         $('#answerButton').hide();
+        $('#backButton').hide();
+        
     },
 
     hideWidget: function(){
@@ -67,6 +69,7 @@ Widget = {
             events_listener: { events: '*', listener: onSipEventSession }
         });
         var number = $('#number').val();
+        console.log(number);
         oSipSessionCall.call(number);
         if (oSipSessionCall.call(number) != 0) {
             oSipSessionCall = null;
@@ -81,6 +84,8 @@ Widget = {
         $('#endButton').hide();
         $('#answerButton').hide();
         $('#audioButton').show();
+        $('#backButton').hide();
+        $('#contactButton').show();
         //$('#widgetCard').hide();
         Widget.stopRingTone();
         Widget.stopRingbackTone();
@@ -144,15 +149,67 @@ Widget = {
         catch (e) { }
     },
 
-    stopRingbackTone: function () {
+    stopRingbackTone: function() {
         try { ringbacktone.pause(); }
         catch (e) { }
+    },
+
+    showContacts: function() {
+        $.getJSON( "contacts.json", function( response ) {
+            contactList = response;
+            console.log(response);
+            for(i=0;i<contactList.length;i++){
+                contactElement = "<tr><td><b>"+ contactList[i].name +"</b><p>"+ contactList[i].contact +"</p></td><td>"
+                        +"<button class=\"mdl-button mdl-js-button mdl-button--icon\">"
+                        +"<i class=\"material-icons\" onclick=\"Widget.callContacts(" + contactList[i].contact + ")" 
+                        + "\">call</i></button></td></tr>";
+                $('#contactbody').append(contactElement);
+            }
+            
+        });
+        $('#first').hide();
+        $('#forth').show();
+        $('#backButton').show();
+        $('#audioButton').hide();
+        $('#contactButton').hide();
+    },
+
+    callContacts: function(number) {
+        $('#callStatus').hide();
+        $('#endButton').show();
+        $('#audioButton').hide();
+        $('#forth').hide();
+        $('#second').show();
+        var n = number.toString();
+        $('#disp1').html(n);
+        oSipSessionCall= oSipStack.newSession('call-audio', {
+            audio_remote: document.getElementById('audio_remote'),
+            events_listener: { events: '*', listener: onSipEventSession }
+        });
+        oSipSessionCall.call(n);
+        if (oSipSessionCall.call(number) != 0) {
+            oSipSessionCall = null;
+            txtCallStatus.value = 'Failed to make call';
+            $('#endButton').hide();
+            $('#answerButton').hide();
+            $('#audioButton').show();
+        }
+    },
+
+    goBack: function() {
+        $('#first').show();
+        $('#forth').hide();
+        $('#backButton').hide();
+        $('#audioButton').show();
+        $('#contactButton').show();
+
     }
 }
 
 $(function(){
     $('#second').hide();
     $('#third').hide();
+    $('#forth').hide();
     $('#audioButton').click(function(){
         $('#first').hide();
         $('#second').show();

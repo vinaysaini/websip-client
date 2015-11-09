@@ -21,82 +21,135 @@
                 <div id="txtRegStatus"></div>
             </div>
             
-            <div>
-                <div id="first" class="mdl-card__supporting-text" style="border-top: 1px solid rgba(0,0,0,.1);">
-                    <div id="container">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="number"/>
-                            <label class="mdl-textfield__label" for="sample3">Number</label>
-                        </div>
-                        <ul class="numpad">
-                            <li>
-                                <button onclick="Widget.dialNum('1');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">1</button>
-                            </li>
-                            <li>
-                                <button onclick="Widget.dialNum('2');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">2</button>
-                            </li>
-                            <li>
-                                <button onclick="Widget.dialNum('3');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">3</button>
-                            </li>
-                            <li>
-                                <button onclick="Widget.dialNum('4');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">4</button>
-                            </li>
-                            <li>
-                                <button onclick="Widget.dialNum('5');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">5</button>
-                            </li>
-                            <li>
-                                <button onclick="Widget.dialNum('6');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">6</button>
-                            </li>
-                            <li>
-                                <button onclick="Widget.dialNum('7');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">7</button>
-                            </li>
-                            <li>
-                                <button onclick="Widget.dialNum('8');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">8</button>
-                            </li>
-                            <li>
-                                <button onclick="Widget.dialNum('9');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">9</button>
-                            </li>
-                            <li>
-                                <button onclick="Widget.dialNum('*');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">*</button>
-                            </li>
-                            <li>
-                                <button onclick="Widget.dialNum('0');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">0</button>
-                            </li>
-                            <li>
-                                <button onclick="Widget.dialNum('#');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">#</button>
-                            </li>
-                        </ul>
+            <div id="first" class="mdl-card__supporting-text" style="border-top: 1px solid rgba(0,0,0,.1);">
+                <div id="container">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="number"/>
+                        <label class="mdl-textfield__label" for="sample3">Number</label>
                     </div>
+                    <ul class="numpad">
+                        <li>
+                            <button onclick="Widget.dialNum('1');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">1</button>
+                        </li>
+                        <li>
+                            <button onclick="Widget.dialNum('2');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">2</button>
+                        </li>
+                        <li>
+                            <button onclick="Widget.dialNum('3');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">3</button>
+                        </li>
+                        <li>
+                            <button onclick="Widget.dialNum('4');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">4</button>
+                        </li>
+                        <li>
+                            <button onclick="Widget.dialNum('5');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">5</button>
+                        </li>
+                        <li>
+                            <button onclick="Widget.dialNum('6');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">6</button>
+                        </li>
+                        <li>
+                            <button onclick="Widget.dialNum('7');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">7</button>
+                        </li>
+                        <li>
+                            <button onclick="Widget.dialNum('8');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">8</button>
+                        </li>
+                        <li>
+                            <button onclick="Widget.dialNum('9');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">9</button>
+                        </li>
+                        <li>
+                            <button onclick="Widget.dialNum('*');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">*</button>
+                        </li>
+                        <li>
+                            <button onclick="Widget.dialNum('0');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">0</button>
+                        </li>
+                        <li>
+                            <button onclick="Widget.dialNum('#');" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ripple-list">#</button>
+                        </li>
+                    </ul>
                 </div>
+            </div>
 
-                <div id="second" class="mdl-card__supporting-text" style="border-top: 1px solid rgba(0,0,0,.1);">
-                    <div id="container">
-                        <h6>Dialed Number...</h6>
-                        <h3 id="disp1"><b></b></h3>
-                        </br></br>
-                        <h5 id="txtCallStatus"></h5>
-                    </div>
-                </div> 
+            <div id="second" class="mdl-card__supporting-text" style="border-top: 1px solid rgba(0,0,0,.1);">
+                <div id="container">
+                    <h6>Dialed Number...</h6>
+                    <h3 id="disp1"><b></b></h3>
+                    </br></br>
+                    <h5 id="txtCallStatus"></h5>
+                </div>
+            </div> 
 
-                <div id="third" class="mdl-card__supporting-text" style="border-top: 1px solid rgba(0,0,0,.1);">
-                    <div id="container">
-                        <h6>Incoming Call..</h6>
-                        <h3 id="callerNum"><b></b></h3>
-                        </br></br>
-                        <h5 id="txtCallStatus1"></h5>
-                    </div>
-                </div> 
+            <div id="third" class="mdl-card__supporting-text" style="border-top: 1px solid rgba(0,0,0,.1);">
+                <div id="container">
+                    <h6>Incoming Call..</h6>
+                    <h3 id="callerNum"><b></b></h3>
+                    </br></br>
+                    <h5 id="txtCallStatus1"></h5>
+                </div>
+            </div>
+
+            <div id="forth" style="border-top: 1px solid rgba(0,0,0,.1);">
+                <div id="contactTable" style="height: 330px;overflow: auto;">
+                    <table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="contactbody">
+                            <!-- <tr>
+                                <td><b>Vinay Saini</b><p>222222</p></td>
+                                <td>
+                                    <button class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="material-icons">call</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                               
+                                <td><b>Vinay Saini</b><p>222222</p></td>
+                                <td>
+                                    <button class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="material-icons">call</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Vinay Saini</b><p>222222</p></td>
+                                <td>
+                                    <button class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="material-icons">call</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Vinay Saini</b><p>222222</p></td>
+                                <td>
+                                    <button class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="material-icons">call</i>
+                                    </button>
+                                </td>
+                            </tr> -->
+                             
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="mdl-card__actions mdl-card--border">
                 <a id="audioButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="Widget.audioCall();">
-                    Audio Call       
+                    Call       
                 </a>
                 <a id="answerButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="Widget.answerCall();">
                     Answer       
                 </a>
                 <a id="endButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="Widget.endCall();">
                     End
+                </a>
+                <a id="contactButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="Widget.showContacts();">
+                    Contacts
+                </a>
+                <a id="backButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="Widget.goBack();">
+                    Back
                 </a>  
             </div>
 
