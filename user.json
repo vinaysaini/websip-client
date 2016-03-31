@@ -1,9 +1,9 @@
 {
-	"display_name" : "Vinay",
-	"username" : "user2",
-	"password" : "user2",
-	"realm" : "sip.webovs.com",
-	"impu" : "sip:user2@sip.webovs.com",
-	"proxy": "udp://sip.webovs.com:5060"
+	"display_name" : "413",
+	"username" : "413",
+	"password" : "logm0050",
+	"realm" : "wehbedxb.dyndns-office.com",
+	"impu" : "sip:413@wehbedxb.dyndns-office.com",
+	"proxy": "udp://wehbedxb.dyndns-office.com:8095"
 
 }

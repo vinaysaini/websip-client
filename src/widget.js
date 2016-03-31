@@ -38,7 +38,7 @@ Widget = {
                 display_name: userAgent.display_name,
                 outbound_proxy_url: userAgent.proxy,
                 enable_media_stream_cache: true,
-                enable_rtcweb_breaker: true, 
+                enable_rtcweb_breaker: false, 
                 events_listener: { events: '*', listener: onSipEventStack },
                 enable_early_ims: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.disable_early_ims') != "true" : true), // Must be true unless you're using a real IMS network
                 enable_media_stream_cache: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.enable_media_caching') == "true" : true),
